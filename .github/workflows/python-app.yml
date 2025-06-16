@@ -32,11 +32,11 @@ jobs:
 
     - name: Install the project
       run: |
-        uv sync --locked --all-extres --dev
+        uv sync --locked --all-extras --dev
 
     - name: Run Ruff
       run: |
-        ruff check --ouput-format=github .
+        ruff check --output-format=github .
 
     - name: Run tests
       run: |
