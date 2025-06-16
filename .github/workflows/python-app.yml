@@ -36,7 +36,7 @@ jobs:
 
     - name: Run Ruff
       run: |
-        ruff check --output-format=github .
+        uv run ruff check --output-format=github .
 
     - name: Run tests
       run: |
