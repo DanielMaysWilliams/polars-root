@@ -8,11 +8,14 @@ requires-python = ">=3.10"
 dependencies = [
 	"awkward>=2",
 	"awkward>=2.7 ; python_version >= '3.13'",
-	"polars>=1.22",
 	"pyarrow>=15",
 	"pyarrow>=18 ; python_version >= '3.13'",
 	"uproot>=5.4",
 ]
+
+[project.optional-dependencies]
+standard = ["polars>=1.22"]
+u64-idx = ["polars-u64-idx>=1.22"]
 
 [build-system]
 requires = ["hatchling"]
@@ -23,3 +26,6 @@ dev = ["coverage>=7", "ipython>=8", "pytest>=8", "ruff>=0.11"]
 
 [tool.ruff]
 line-length = 120
+
+[tool.uv]
+conflicts = [[{ extra = "standard" }, { extra = "u64-idx" }]]

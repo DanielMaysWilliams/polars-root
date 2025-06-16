@@ -6,6 +6,10 @@ resolution-markers = [
     "python_full_version >= '3.11' and python_full_version < '3.13'",
     "python_full_version < '3.11'",
 ]
+conflicts = [[
+    { package = "polars-root", extra = "standard" },
+    { package = "polars-root", extra = "u64-idx" },
+]]
 
 [[package]]
 name = "asttokens"
@@ -23,11 +27,11 @@ source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "awkward-cpp" },
     { name = "fsspec" },
-    { name = "importlib-metadata", marker = "python_full_version < '3.12'" },
-    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "importlib-metadata", marker = "python_full_version < '3.12' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "numpy", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
     { name = "packaging" },
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/bd/1e/beab4e89ce3bcfd9dac16b66445f4c7aef81f073aee542f59fc82f072baa/awkward-2.8.4.tar.gz", hash = "sha256:840ee49120d882c892e12fe8be2195991cab95c3dab4a6ee76b4a9696a1ebc9b", size = 6222255, upload-time = "2025-06-14T13:45:08.906Z" }
 wheels = [
@@ -39,8 +43,8 @@ name = "awkward-cpp"
 version = "46"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "numpy", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/11/bb/2d2bcc1ff8810f43d6c2534aad8dd108d7b092b63ca443c73b2266967291/awkward_cpp-46.tar.gz", hash = "sha256:b82becb65a33280c6c27336ee5c037c5b7e394be52565aa31e087ca54adce59e", size = 1688149, upload-time = "2025-05-15T21:54:39.252Z" }
 wheels = [
@@ -259,7 +263,7 @@ name = "exceptiongroup"
 version = "1.3.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/0b/9f/a65090624ecf468cdca03533906e7c69ed7588582240cfe7cc9e770b50eb/exceptiongroup-1.3.0.tar.gz", hash = "sha256:b241f5885f560bc56a59ee63ca4c6a8bfa46ae4ad651af316d4e81817bb9fd88", size = 29749, upload-time = "2025-05-10T17:42:51.123Z" }
 wheels = [
@@ -289,7 +293,7 @@ name = "importlib-metadata"
 version = "8.7.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "zipp", marker = "python_full_version < '3.13'" },
+    { name = "zipp", marker = "python_full_version < '3.13' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/76/66/650a33bd90f786193e4de4b3ad86ea60b53c89b669a5c7be931fac31cdb0/importlib_metadata-8.7.0.tar.gz", hash = "sha256:d13b81ad223b890aa16c5471f2ac3056cf76c5f10f82d6f9292f0b415f389000", size = 56641, upload-time = "2025-04-27T15:29:01.736Z" }
 wheels = [
@@ -313,17 +317,17 @@ resolution-markers = [
     "python_full_version < '3.11'",
 ]
 dependencies = [
-    { name = "colorama", marker = "python_full_version < '3.11' and sys_platform == 'win32'" },
-    { name = "decorator", marker = "python_full_version < '3.11'" },
-    { name = "exceptiongroup", marker = "python_full_version < '3.11'" },
-    { name = "jedi", marker = "python_full_version < '3.11'" },
-    { name = "matplotlib-inline", marker = "python_full_version < '3.11'" },
-    { name = "pexpect", marker = "python_full_version < '3.11' and sys_platform != 'emscripten' and sys_platform != 'win32'" },
-    { name = "prompt-toolkit", marker = "python_full_version < '3.11'" },
-    { name = "pygments", marker = "python_full_version < '3.11'" },
-    { name = "stack-data", marker = "python_full_version < '3.11'" },
-    { name = "traitlets", marker = "python_full_version < '3.11'" },
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "colorama", marker = "(python_full_version < '3.11' and sys_platform == 'win32') or (python_full_version >= '3.11' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx') or (sys_platform != 'win32' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "decorator", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "exceptiongroup", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "jedi", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "matplotlib-inline", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "pexpect", marker = "(python_full_version < '3.11' and sys_platform != 'emscripten' and sys_platform != 'win32') or (python_full_version >= '3.11' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx') or (sys_platform == 'emscripten' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx') or (sys_platform == 'win32' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "prompt-toolkit", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "pygments", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "stack-data", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "traitlets", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/85/31/10ac88f3357fc276dc8a64e8880c82e80e7459326ae1d0a211b40abf6665/ipython-8.37.0.tar.gz", hash = "sha256:ca815841e1a41a1e6b73a0b08f3038af9b2252564d01fc405356d34033012216", size = 5606088, upload-time = "2025-05-31T16:39:09.613Z" }
 wheels = [
@@ -339,17 +343,17 @@ resolution-markers = [
     "python_full_version >= '3.11' and python_full_version < '3.13'",
 ]
 dependencies = [
-    { name = "colorama", marker = "python_full_version >= '3.11' and sys_platform == 'win32'" },
-    { name = "decorator", marker = "python_full_version >= '3.11'" },
-    { name = "ipython-pygments-lexers", marker = "python_full_version >= '3.11'" },
-    { name = "jedi", marker = "python_full_version >= '3.11'" },
-    { name = "matplotlib-inline", marker = "python_full_version >= '3.11'" },
-    { name = "pexpect", marker = "python_full_version >= '3.11' and sys_platform != 'emscripten' and sys_platform != 'win32'" },
-    { name = "prompt-toolkit", marker = "python_full_version >= '3.11'" },
-    { name = "pygments", marker = "python_full_version >= '3.11'" },
-    { name = "stack-data", marker = "python_full_version >= '3.11'" },
-    { name = "traitlets", marker = "python_full_version >= '3.11'" },
-    { name = "typing-extensions", marker = "python_full_version == '3.11.*'" },
+    { name = "colorama", marker = "(python_full_version >= '3.11' and sys_platform == 'win32') or (python_full_version < '3.11' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx') or (sys_platform != 'win32' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "decorator", marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "ipython-pygments-lexers", marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "jedi", marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "matplotlib-inline", marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "pexpect", marker = "(python_full_version >= '3.11' and sys_platform != 'emscripten' and sys_platform != 'win32') or (python_full_version < '3.11' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx') or (sys_platform == 'emscripten' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx') or (sys_platform == 'win32' and extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "prompt-toolkit", marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "pygments", marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "stack-data", marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "traitlets", marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "typing-extensions", marker = "python_full_version == '3.11.*' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/dc/09/4c7e06b96fbd203e06567b60fb41b06db606b6a82db6db7b2c85bb72a15c/ipython-9.3.0.tar.gz", hash = "sha256:79eb896f9f23f50ad16c3bc205f686f6e030ad246cc309c6279a242b14afe9d8", size = 4426460, upload-time = "2025-05-31T16:34:55.678Z" }
 wheels = [
@@ -361,7 +365,7 @@ name = "ipython-pygments-lexers"
 version = "1.1.1"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "pygments", marker = "python_full_version >= '3.11'" },
+    { name = "pygments", marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/ef/4c/5dd1d8af08107f88c7f741ead7a40854b8ac24ddf9ae850afbcf698aa552/ipython_pygments_lexers-1.1.1.tar.gz", hash = "sha256:09c0138009e56b6854f9535736f4171d855c8c08a563a0dcd8022f78355c7e81", size = 8393, upload-time = "2025-01-17T11:24:34.505Z" }
 wheels = [
@@ -578,16 +582,23 @@ version = "0.1.0"
 source = { editable = "." }
 dependencies = [
     { name = "awkward" },
-    { name = "polars" },
     { name = "pyarrow" },
     { name = "uproot" },
+]
+
+[package.optional-dependencies]
+standard = [
+    { name = "polars" },
+]
+u64-idx = [
+    { name = "polars-u64-idx" },
 ]
 
 [package.dev-dependencies]
 dev = [
     { name = "coverage" },
-    { name = "ipython", version = "8.37.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "ipython", version = "9.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "ipython", version = "8.37.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "ipython", version = "9.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
     { name = "pytest" },
     { name = "ruff" },
 ]
@@ -596,11 +607,13 @@ dev = [
 requires-dist = [
     { name = "awkward", specifier = ">=2" },
     { name = "awkward", marker = "python_full_version >= '3.13'", specifier = ">=2.7" },
-    { name = "polars", specifier = ">=1.22" },
+    { name = "polars", marker = "extra == 'standard'", specifier = ">=1.22" },
+    { name = "polars-u64-idx", marker = "extra == 'u64-idx'", specifier = ">=1.22" },
     { name = "pyarrow", specifier = ">=15" },
     { name = "pyarrow", marker = "python_full_version >= '3.13'", specifier = ">=18" },
     { name = "uproot", specifier = ">=5.4" },
 ]
+provides-extras = ["standard", "u64-idx"]
 
 [package.metadata.requires-dev]
 dev = [
@@ -608,6 +621,20 @@ dev = [
     { name = "ipython", specifier = ">=8" },
     { name = "pytest", specifier = ">=8" },
     { name = "ruff", specifier = ">=0.11" },
+]
+
+[[package]]
+name = "polars-u64-idx"
+version = "1.30.0"
+source = { registry = "https://pypi.org/simple" }
+sdist = { url = "https://files.pythonhosted.org/packages/b7/94/697cb4662643a8d676483964947b661d3de95f61156735d1a77c389caf25/polars_u64_idx-1.30.0.tar.gz", hash = "sha256:22a3b90b066cd97a22736b0e094d59e60f0bf97537d9740f4bc2529e3ba48490", size = 4668356, upload-time = "2025-05-21T13:33:27.692Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/8a/cf/79b26e22367ea0b28631da4879f4139611a82b3a5bbdc403f533508e949f/polars_u64_idx-1.30.0-cp39-abi3-macosx_10_12_x86_64.whl", hash = "sha256:0fae88281c94ab68221d3fa3901d705a15b4dc11fdecb6474aabe256aed78a28", size = 35623856, upload-time = "2025-05-21T13:33:05.407Z" },
+    { url = "https://files.pythonhosted.org/packages/c8/a5/29301a6e76a9413439189d8e0f750fc097b844f52a2c4273096568d0e896/polars_u64_idx-1.30.0-cp39-abi3-macosx_11_0_arm64.whl", hash = "sha256:8f554fcaad8d076838c510ac366d00c46b6f0b1bb71811dbb809b3602e4bbb90", size = 32388537, upload-time = "2025-05-21T13:33:09.087Z" },
+    { url = "https://files.pythonhosted.org/packages/5f/e9/a43aa36bb6f86d50577daa44b0f616cc69ed858fdac22507192d83aea272/polars_u64_idx-1.30.0-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl", hash = "sha256:153b941e6392d8233a9c838c42840d58fb466132cc6d6c034d3760b4f0bd0940", size = 36180457, upload-time = "2025-05-21T13:33:11.87Z" },
+    { url = "https://files.pythonhosted.org/packages/93/69/638d0c466589a0cf6145a028df4e7796664861f42092ede4220756cc1bb1/polars_u64_idx-1.30.0-cp39-abi3-manylinux_2_24_aarch64.whl", hash = "sha256:0e8a67b39b834039aefb1e42d5bb6ca49d865f33a4a754967686b6c4d4cef340", size = 33312769, upload-time = "2025-05-21T13:33:15.041Z" },
+    { url = "https://files.pythonhosted.org/packages/44/b5/a7c0b824e33bc4e6ec162313bc82d81fb7fc3b915f23af168ed303604e13/polars_u64_idx-1.30.0-cp39-abi3-win_amd64.whl", hash = "sha256:57a9166a8b02eeeca05777c3abd4a5abb43af014edd52b9bbecf4bc423209fb5", size = 36282822, upload-time = "2025-05-21T13:33:18.383Z" },
+    { url = "https://files.pythonhosted.org/packages/fe/de/7f43ec1cfaee7b046687af3290c4f28d1d53b00cd95cf4dd243fd32c2b9b/polars_u64_idx-1.30.0-cp39-abi3-win_arm64.whl", hash = "sha256:6c764ff187128e5dbc2cf894a08021c3a47873cd413dc82a9b1131c73a520ee6", size = 32522452, upload-time = "2025-05-21T13:33:21.595Z" },
 ]
 
 [[package]]
@@ -707,13 +734,13 @@ name = "pytest"
 version = "8.4.0"
 source = { registry = "https://pypi.org/simple" }
 dependencies = [
-    { name = "colorama", marker = "sys_platform == 'win32'" },
-    { name = "exceptiongroup", marker = "python_full_version < '3.11'" },
+    { name = "colorama", marker = "sys_platform == 'win32' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "exceptiongroup", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
     { name = "iniconfig" },
     { name = "packaging" },
     { name = "pluggy" },
     { name = "pygments" },
-    { name = "tomli", marker = "python_full_version < '3.11'" },
+    { name = "tomli", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/fb/aa/405082ce2749be5398045152251ac69c0f3578c7077efc53431303af97ce/pytest-8.4.0.tar.gz", hash = "sha256:14d920b48472ea0dbf68e45b96cd1ffda4705f33307dcc86c676c1b5104838a6", size = 1515232, upload-time = "2025-06-02T17:36:30.03Z" }
 wheels = [
@@ -824,10 +851,10 @@ dependencies = [
     { name = "awkward" },
     { name = "cramjam" },
     { name = "fsspec" },
-    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11'" },
-    { name = "numpy", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "numpy", version = "2.2.6", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
+    { name = "numpy", version = "2.3.0", source = { registry = "https://pypi.org/simple" }, marker = "python_full_version >= '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
     { name = "packaging" },
-    { name = "typing-extensions", marker = "python_full_version < '3.11'" },
+    { name = "typing-extensions", marker = "python_full_version < '3.11' or (extra == 'extra-11-polars-root-standard' and extra == 'extra-11-polars-root-u64-idx')" },
     { name = "xxhash" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/76/e6/9c67c06da1c785db9f6df5efe09e9429eadfc318da5da9f7e0e4fab41ad0/uproot-5.6.2.tar.gz", hash = "sha256:18f4d3fc0cccc7234297b9c809cf80ada8dff31cd8d4feba4bc4132c5312b511", size = 961870, upload-time = "2025-05-15T19:32:06.893Z" }
