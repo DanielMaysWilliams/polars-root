@@ -3,15 +3,14 @@ name = "polars-root"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-authors = [
-    { name = "Daniel Williams", email = "dmw2174@columbia.edu" }
-]
-requires-python = ">=3.13"
+authors = [{ name = "Daniel Williams", email = "dmw2174@columbia.edu" }]
+requires-python = ">=3.10"
 dependencies = [
-    "awkward>=2.8.4",
-    "polars>=1.30.0",
-    "pyarrow>=20.0.0",
-    "uproot>=5.6.2",
+	"awkward>=2",
+	"polars>=1.22",
+	"pyarrow>=15",
+	"pyarrow>=18 ; python_version >= '3.13'",
+	"uproot>=5.4",
 ]
 
 [build-system]
@@ -19,12 +18,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [dependency-groups]
-dev = [
-    "coverage>=7.9.1",
-    "ipython>=9.3.0",
-    "pytest>=8.4.0",
-    "ruff>=0.11.13",
-]
+dev = ["coverage>=7", "ipython>=8", "pytest>=8", "ruff>=0.11"]
 
 [tool.ruff]
 line-length = 120
