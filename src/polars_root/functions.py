@@ -1,3 +1,5 @@
+from typing import cast
+
 import awkward as ak
 import polars as pl
 import uproot
@@ -14,8 +16,7 @@ def scan_root(file_name: str, tree_name: str | None = None) -> pl.LazyFrame:
 
     # Create empty DataFrame from TTree to detect schema
     schema_df = pl.from_arrow(ak.to_arrow_table(tree.arrays(entry_stop=0), extensionarray=False))
-    if isinstance(schema_df, pl.Series):
-        schema_df = schema_df.to_frame()
+    schema_df = cast(pl.DataFrame, schema_df)
     schema = schema_df.schema
 
     def source_generator(
@@ -30,8 +31,7 @@ def scan_root(file_name: str, tree_name: str | None = None) -> pl.LazyFrame:
         # Use built-in uproot batched iteration to yield DataFrames
         for batch in tree.iterate(expressions=with_columns, step_size=batch_size, entry_stop=n_rows):
             df = pl.from_arrow(ak.to_arrow_table(batch, extensionarray=False))
-            if isinstance(df, pl.Series):
-                df = df.to_frame()
+            df = cast(pl.DataFrame, df)
 
             if predicate is not None:
                 df = df.filter(predicate)

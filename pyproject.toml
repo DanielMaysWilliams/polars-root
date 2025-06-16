@@ -10,6 +10,7 @@ requires-python = ">=3.13"
 dependencies = [
     "awkward>=2.8.4",
     "polars>=1.30.0",
+    "pyarrow>=20.0.0",
     "uproot>=5.6.2",
 ]
 
@@ -19,7 +20,9 @@ build-backend = "hatchling.build"
 
 [dependency-groups]
 dev = [
+    "coverage>=7.9.1",
     "ipython>=9.3.0",
+    "pytest>=8.4.0",
     "ruff>=0.11.13",
 ]
 
