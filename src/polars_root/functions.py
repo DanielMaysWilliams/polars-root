@@ -13,9 +13,7 @@ def scan_root(file_name: str, tree_name: str | None = None) -> pl.LazyFrame:
         raise Exception(f"{file_name} does not contain a TTree named {tree_name}")
 
     # Create empty DataFrame from TTree to detect schema
-    schema_df = pl.from_arrow(
-        ak.to_arrow_table(tree.arrays(entry_stop=0), extensionarray=False)
-    )
+    schema_df = pl.from_arrow(ak.to_arrow_table(tree.arrays(entry_stop=0), extensionarray=False))
     if isinstance(schema_df, pl.Series):
         schema_df = schema_df.to_frame()
     schema = schema_df.schema
@@ -30,9 +28,7 @@ def scan_root(file_name: str, tree_name: str | None = None) -> pl.LazyFrame:
             batch_size = "100 MB"
 
         # Use built-in uproot batched iteration to yield DataFrames
-        for batch in tree.iterate(
-            expressions=with_columns, step_size=batch_size, entry_stop=n_rows
-        ):
+        for batch in tree.iterate(expressions=with_columns, step_size=batch_size, entry_stop=n_rows):
             df = pl.from_arrow(ak.to_arrow_table(batch, extensionarray=False))
             if isinstance(df, pl.Series):
                 df = df.to_frame()
