@@ -1,12 +1,22 @@
 [project]
 name = "polars-root"
-version = "0.1.0"
+dynamic = ["version"]
 description = "Polars plugin for reading ROOT files"
 readme = "README.md"
 authors = [
 	{ name = "Daniel Williams", email = "daniel.mays.williams@gmail.com" },
 ]
+license = { file = "LICENSE" }
 requires-python = ">=3.10"
+keywords = ["dataframe", "polars", "root"]
+classifiers = [
+	"Programming Language :: Python :: 3 :: Only",
+	"Programming Language :: Python :: 3.10",
+	"Programming Language :: Python :: 3.11",
+	"Programming Language :: Python :: 3.12",
+	"Programming Language :: Python :: 3.13",
+	"Topic :: Scientific/Engineering :: Physics",
+]
 dependencies = [
 	"awkward>=2",
 	"awkward>=2.7 ; python_version >= '3.13'",
@@ -14,6 +24,10 @@ dependencies = [
 	"pyarrow>=18 ; python_version >= '3.13'",
 	"uproot>=5.4",
 ]
+
+
+[project.urls]
+Homepage = "https://github.com/DanielMaysWilliams/polars-root"
 
 [project.optional-dependencies]
 standard = ["polars>=1.22"]
@@ -31,3 +45,6 @@ line-length = 120
 
 [tool.uv]
 conflicts = [[{ extra = "standard" }, { extra = "u64-idx" }]]
+
+[tool.hatch.version]
+path = "src/polars_root/__init__.py"
