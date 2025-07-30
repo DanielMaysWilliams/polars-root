@@ -1,7 +1,7 @@
 [project]
 name = "polars-root"
 dynamic = ["version"]
-description = "Polars plugin for reading ROOT files"
+description = "Polars plugin for reading CERN's ROOT file format"
 readme = "README.md"
 authors = [
 	{ name = "Daniel Williams", email = "daniel.mays.williams@gmail.com" },
