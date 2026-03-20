@@ -23,6 +23,7 @@ dependencies = [
 	"awkward>=2.7 ; python_version >= '3.13'",
 	"pyarrow>=15",
 	"pyarrow>=18 ; python_version >= '3.13'",
+	"pyarrow>=23 ; python_version >= '3.14'",
 	"uproot>=5.4",
 ]
 
