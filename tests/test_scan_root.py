@@ -1,35 +1,8 @@
 import pytest
 import polars as pl
-import numpy as np
 import uproot
 
 from polars_root import scan_root
-
-
-@pytest.fixture
-def one_column_root_file(tmp_path):
-    # Create a ROOT file with a simple TTree using uproot
-    file_path = tmp_path / "test.root"
-    data = {
-        "x": np.array([1, 2, 3], dtype=np.int32),
-    }
-    with uproot.recreate(file_path) as f:
-        f["tree"] = data
-    return str(file_path), "tree", data
-
-
-@pytest.fixture
-def simple_root_file(tmp_path):
-    # Create a ROOT file with a simple TTree using uproot
-    file_path = tmp_path / "test.root"
-    data = {
-        "x": np.array([1, 2, 3], dtype=np.int32),
-        "y": np.array([10.0, 20.0, 30.0], dtype=np.float64),
-        "z": np.array(["a", "b", "c"], dtype="U1"),
-    }
-    with uproot.recreate(file_path) as f:
-        f["tree"] = data
-    return str(file_path), "tree", data
 
 
 def test_scan_root_reads_one_column_tree(one_column_root_file):
