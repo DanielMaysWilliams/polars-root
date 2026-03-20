@@ -24,7 +24,7 @@ dependencies = [
 	"pyarrow>=15",
 	"pyarrow>=18 ; python_version >= '3.13'",
 	"pyarrow>=23 ; python_version >= '3.14'",
-	"uproot>=5.4",
+	"uproot>=5.7",
 ]
 
 

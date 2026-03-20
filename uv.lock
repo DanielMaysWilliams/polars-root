@@ -741,7 +741,7 @@ requires-dist = [
     { name = "pyarrow", specifier = ">=15" },
     { name = "pyarrow", marker = "python_full_version >= '3.13'", specifier = ">=18" },
     { name = "pyarrow", marker = "python_full_version >= '3.14'", specifier = ">=23" },
-    { name = "uproot", specifier = ">=5.4" },
+    { name = "uproot", specifier = ">=5.7" },
 ]
 provides-extras = ["standard", "u64-idx"]
 
