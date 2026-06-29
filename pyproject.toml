@@ -1,6 +1,6 @@
 [project]
 name = "polars-root"
-dynamic = ["version"]
+version = "0.2.0"
 description = "Polars plugin for reading CERN's ROOT file format"
 readme = "README.md"
 authors = [
@@ -36,8 +36,8 @@ standard = ["polars>=1.22"]
 u64-idx = ["polars-u64-idx>=1.22"]
 
 [build-system]
-requires = ["hatchling"]
-build-backend = "hatchling.build"
+requires = ["uv_build>=0.11,<0.12"]
+build-backend = "uv_build"
 
 [dependency-groups]
 dev = ["coverage>=7", "ipython>=8", "pytest>=8", "ruff>=0.11"]
@@ -45,8 +45,8 @@ dev = ["coverage>=7", "ipython>=8", "pytest>=8", "ruff>=0.11"]
 [tool.ruff]
 line-length = 120
 
+[tool.ruff.lint]
+extend-select = ["I", "UP", "B"]
+
 [tool.uv]
 conflicts = [[{ extra = "standard" }, { extra = "u64-idx" }]]
-
-[tool.hatch.version]
-path = "src/polars_root/__init__.py"

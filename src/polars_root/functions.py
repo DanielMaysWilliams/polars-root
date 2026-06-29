@@ -3,17 +3,16 @@ from typing import cast
 import awkward as ak
 import polars as pl
 import uproot
-from uproot.behaviors.TBranch import HasBranches
-from uproot.behaviors.RNTuple import HasFields
 from polars.io.plugins import register_io_source
+from uproot.behaviors.RNTuple import HasFields
+from uproot.behaviors.TBranch import HasBranches
 
 
 def scan_root(file_name: str, tree_name: str | None = None) -> pl.LazyFrame:
-    tree = uproot.open(file_name)
-    if tree_name is not None:
-        tree = tree[tree_name]
+    f = uproot.open(file_name)
+    tree = f[tree_name] if tree_name is not None else f
     if not isinstance(tree, (HasBranches, HasFields)):
-        raise Exception(f"{file_name} does not contain a TTree or RNTuple named {tree_name}")
+        raise TypeError(f"{file_name!r} does not contain a TTree or RNTuple (tree_name={tree_name!r})")
 
     # Create empty DataFrame to detect schema
     schema_df = pl.from_arrow(ak.to_arrow_table(tree.arrays(entry_stop=0), extensionarray=False))
