@@ -1,5 +1,5 @@
-import pytest
 import polars as pl
+import pytest
 import uproot
 
 from polars_root import scan_root
@@ -46,7 +46,7 @@ def test_scan_root_invalid_tree(tmp_path):
     file_path = tmp_path / "empty.root"
     with uproot.recreate(file_path):
         pass
-    with pytest.raises(Exception):
+    with pytest.raises(KeyError):
         scan_root(str(file_path), "not_a_tree")
 
 
@@ -61,5 +61,5 @@ def test_scan_root_colon_tree_name(simple_root_file):
 
 def test_scan_root_invalid_tree_name(simple_root_file):
     file_path, _, _ = simple_root_file
-    with pytest.raises(Exception):
+    with pytest.raises(TypeError):
         scan_root(file_path)

@@ -6,16 +6,10 @@ Uses [Uproot](https://github.com/scikit-hep/uproot5) and [Awkward Arrays](https:
 ## Installation ##
 
 `polars-root` supports Python 3.10 and later.
-To install for use with standard `polars`, run:
+To install, run:
 
 ```bash
-pip install 'polars-root[standard]'
-```
-
-To install for use with `polars-u64-idx`, run:
-
-```bash
-pip install 'polars-root[u64-idx]'
+pip install polars-root
 ```
 
 ## Usage ##
